@@ -18,13 +18,13 @@ router.get("/login", function (req, res) {
 });
 router.post("/signup", registerUser)
 
-router.get("/users/dashboard", authUser, function (req, res) {
-    res.render('users',  { user: req.user.name })
+router.get("/student/dashboard", authUser, function (req, res) {
+    res.render('studentdashboard',  { user: req.user.name })
 });
-router.get("/users/Admin",  authUser, authRole, function (req, res) {
-    res.send('welcome to the admin page')
+router.get("/admin/dashboard",  authUser, authRole, function (req, res) {
+    res.render('Admindashboard',  { user: req.user.name })
 });
-router.get("/users/Admin/projects",  authUser, authRole, function (req, res) {
+router.get("/admin/projects",  authUser, authRole, function (req, res) {
     res.send(' admin project acces page')
 });
 
@@ -36,10 +36,10 @@ router.post(
       failureFlash: true,
     }),(req, res)=> {
         if (req.user.role === 'Admin'){
-      res.redirect("/users/admin" );
+      res.redirect("/admin/dashboard" );
         }
         else{
-            res.redirect("/users/dashboard" );
+            res.redirect("/student/dashboard" );
         }
     }
   );

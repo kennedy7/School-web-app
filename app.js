@@ -4,6 +4,7 @@ const session = require("express-session");
 const flash = require("express-flash");
 const bodyParser = require('body-parser');
 const {router} = require('./routes/UserRoute');
+const { projectRouter } = require('./routes/projectsRoute');
 const cookieParser = require('cookie-parser');
 const passport = require("passport")
 const initializePassport = require("./passportconfig");
@@ -38,6 +39,7 @@ app.use(flash())
 app.use(express.json())
 app.use(cookieParser())
 app.use( router)
+app.use(projectRouter)
 
 
 

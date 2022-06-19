@@ -145,22 +145,16 @@
 <div class="sidebar">
    
     <ul id="sidebarCookie">
-        <li class="spacer"></li>
-        <li class="profile">
-            <span class="profile-image">
-               
-            </span>
+    
+            
             <span class="profile-name">
                 <% if(typeof user == 'underfined'){ %>
                     <%= user %>
                       <% } %> 
               
-              welcome <%= user.charAt(0).toUpperCase() + user.slice(1) %>
+    <strong>||Welcome to the Admin Dashboard||<br>[<%= user.charAt(0).toUpperCase() + user.slice(1) %>]</br></strong>
             </span>
-            <span class="profile-info">
-                
-            </span>
-        </li>
+           
         <li class="spacer"></li>
         <li class="title">
             <i class="feather icon-more-horizontal"></i>
@@ -177,19 +171,19 @@
                     <li class="nav-item">
                         <a class="nav-link wave-effect" href="">
                             <i class="feather icon-layout"></i>
-                            <span class="menu-title">Users(General)</span>
+                            <span class="menu-title">Admin Dashboard</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link wave-effect" href="/">
                             <i class="feather icon-shopping-bag"></i>
-                            <span class="menu-title">student profile</span>
+                            <span class="menu-title">Admin profile</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-darkSidebar wave-effect" href="">
+                        <a  href="/users/projectlist">
                             <i class="feather icon-shopping-bag"></i>
-                            <span class="menu-title">STUDENTS DASHBOARD</span>
+                            <span class="menu-title">students projects</span>
                         </a>
                     </li>
                 </ul>
