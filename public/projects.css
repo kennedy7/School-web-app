@@ -20,7 +20,7 @@ p,
 ul {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
-  color: black;
+  color:rgba(22,34,57,0.99)
 }
 
 body {
@@ -355,11 +355,11 @@ input[type="submit"]:hover {
 }
 
 header {
-  background-color: black;
+  background-color: rgba(22,34,57,0.99);
 }
 
 header.admin {
-  background-color: black;
+  background-color: rgba(22,34,57,0.99);
 }
 
 header.admin > p:after {

@@ -12,36 +12,47 @@ exports.AddProject = function (req, res){
             throw err
         } 
         console.log(results.rows)
-         res.redirect('/users/dashboard')
+         res.redirect('/users/projectlist')
     })
 }
 
 exports.GetStudentProject = function (req, res) {
     const id = req.params.id
     pool.query(
-        'SELECT * FROM articles WHERE id =$1', [id],
+        'SELECT * FROM projects WHERE id =$1', [id],
         (error, results) => {
-            res.render('userarticles', {
+            res.render('Projectsdetails', {
               user:req.user.name,
               project: results.rows[0],
-              isAuthenticated: req.user
             
             });
         });
   }
 
-  exports.GetAdminProjects = function (req, res) {
-    const id = req.params.id
+  exports.EditProject = (req, res) => {
+    var id = req.params.id;
     pool.query(
-        'SELECT * FROM projects WHERE id =$1', [id],
-        (error, results) => {
-            res.render('userarticles', {
-              user:req.user.name,
-              project: results.rows[0],
-              isAuthenticated: req.user
-            
-            });
+      'SELECT * from projects where id= $1',
+      [id],
+      (err, results) => {
+        // console.log(results.rows)
+        res.render('edit.ejs', {
+          project: results.rows[0]
         });
-  }
+      });
+  } 
+  // exports.GetAdminProjects = function (req, res) {
+  //   const id = req.params.id
+  //   pool.query(
+  //       'SELECT * FROM projects WHERE id =$1', [id],
+  //       (error, results) => {
+  //           res.render('userarticles', {
+  //             user:req.user.name,
+  //             project: results.rows[0],
+  //             isAuthenticated: req.user
+            
+  //           });
+  //       });
+  // }
   
   

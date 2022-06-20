@@ -1,0 +1,64 @@
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>LIST</title>
+    <link rel="stylesheet" href="https://bootswatch.com/5/flatly/bootstrap.css">
+    <script src="/send_url.js"></script>
+    <style> 
+    body {
+        
+        background-image: url('https://thumbs.dreamstime.com/b/projects-4501503.jpg')
+         
+    }
+        textarea {
+          width: 100%;
+          height: 350px;
+          padding: 12px 20px;
+          box-sizing: border-box;
+          border: 2px solid #ccc;
+          border-radius: 4px;
+          background-color: transparent;
+          opacity: 40px;
+          font-size: 30px;
+          resize: none;
+        }
+        .textarea2 textarea {
+          width: 50%;
+          height: 150px;
+          padding: 12px 20px;
+          box-sizing: border-box;
+          border: 2px solid #ccc;
+          border-radius: 4px;
+          background-color: transparent;
+          font-size: 20px;
+          resize: none;
+        }
+        </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="container-header">
+        <h1>Edit <%= project.title %></h1>
+      </div>
+      <div class="project-form-wrapper">
+    
+        <form action="/update/<%= project.id %>" method="post">
+
+            <input type="text" name="userId" id="'userId" value ='<%=project.userId%>' hidden >
+            <input type="text" name="department" value="<%= project.department %>" id="'department" placeholder ='Department' style="width:50%" style="font-size: 20px;">
+            <input type="text" name="level" value="<%= project.level %>" id="'level" placeholder ='Level' style="width:50%" style="font-size: 20px;">
+            <input type="text" name="title" value="<%= project.title %>" id="'title" placeholder ='Project Title' style="width:50%" style="font-size: 20px;">
+            <textarea  name = "content"> <%= project.content %></textarea>
+        <div  class="textarea2">
+            <textarea name = "summary"> <%= project.summary %></textarea>
+        </div>
+            <input type="submit" value="Update Project">
+          </form>
+      </div>
+      <a href="/users/projects/<%= project.id %>" class="cancel-button">Discard changes</a>
+    </div>
+  </body>
+</html>
