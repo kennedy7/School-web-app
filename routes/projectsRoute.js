@@ -1,7 +1,7 @@
 const express = require('express')
 const projectRouter = express.Router()
 const {
-    AddProject, GetStudentProject, EditProject
+    AddProject, GetStudentProject, EditProject, UpdateProject
 } = require('../controls/projectsControls')
 
 const {
@@ -40,9 +40,11 @@ projectRouter.get('/users/projectlist', authUser, (req, res) => {
 
 })
 
-projectRouter.get('/users/projects/:id', GetStudentProject)
+projectRouter.get('/users/projects/:id', authUser, GetStudentProject)
 
-projectRouter.get('/edit/:id', EditProject);
+projectRouter.get('/edit/:id', authUser, EditProject);
+
+projectRouter.post('/update/:id', authUser, UpdateProject);
 
 function authGetProject(req, res, next) {
     if (!canViewProject(req.user, req.project)) {

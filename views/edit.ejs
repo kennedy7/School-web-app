@@ -1,11 +1,11 @@
 
-
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
     <title>LIST</title>
     <link rel="stylesheet" href="https://bootswatch.com/5/flatly/bootstrap.css">
+    <link rel="stylesheet" href="/projects.css">
     <script src="/send_url.js"></script>
     <style> 
     body {
@@ -41,24 +41,23 @@
   <body>
     <div class="container">
       <div class="container-header">
-        <h1>Edit <%= project.title %></h1>
+        <h1 style="color:black">Update [<%= project.title %>]</h1>
       </div>
       <div class="project-form-wrapper">
     
         <form action="/update/<%= project.id %>" method="post">
 
-            <input type="text" name="userId" id="'userId" value ='<%=project.userId%>' hidden >
             <input type="text" name="department" value="<%= project.department %>" id="'department" placeholder ='Department' style="width:50%" style="font-size: 20px;">
             <input type="text" name="level" value="<%= project.level %>" id="'level" placeholder ='Level' style="width:50%" style="font-size: 20px;">
             <input type="text" name="title" value="<%= project.title %>" id="'title" placeholder ='Project Title' style="width:50%" style="font-size: 20px;">
-            <textarea  name = "content"> <%= project.content %></textarea>
+            <textarea  name = "content" style="color:black" placeholder="content"> <%= project.content %></textarea>
         <div  class="textarea2">
-            <textarea name = "summary"> <%= project.summary %></textarea>
+            <textarea name = "summary" placeholder="summary"> <%= project.summary %></textarea>
         </div>
             <input type="submit" value="Update Project">
           </form>
       </div>
-      <a href="/users/projects/<%= project.id %>" class="cancel-button">Discard changes</a>
+      <a href="/users/projects/<%= project.id %>" class="btn sub">Discard changes</a>
     </div>
   </body>
 </html>

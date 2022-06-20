@@ -171,7 +171,7 @@ a {
 }
 
 .btn.sub {
-  background-color: #B7C7DF;
+  background-color: rgba(22,34,57,0.99);
 }
 
 .btn.sub:hover {
@@ -184,7 +184,7 @@ a {
   align-items: center;
   font-size: 18px;
   font-weight: bold;
-  color: #ffffff;
+  color: rgba(22,34,57,0.99);
   background-color: #E75252;
   height: 44px;
   padding: 0 65px;
@@ -196,11 +196,11 @@ a {
 }
 
 .btn-confirm.sub {
-  background-color: #B7C7DF;
+  background-color: rgba(22,34,57,0.99);
 }
 
 .btn-confirm.sub:hover {
-  background-color: #A9B9D2;
+  background-color: rgba(22,34,57,0.99);
 }
 
 .confirm {
