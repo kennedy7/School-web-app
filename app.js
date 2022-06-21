@@ -3,6 +3,7 @@ const app = express();
 const session = require("express-session");
 const flash = require("express-flash");
 const bodyParser = require('body-parser');
+const methodOverride = require('method-override');
 const {router} = require('./routes/UserRoute');
 const { projectRouter } = require('./routes/projectsRoute');
 const cookieParser = require('cookie-parser');
@@ -35,6 +36,9 @@ app.use(passport.session());
 
 
 app.use(flash())
+
+//methodOverride
+app.use(methodOverride('_method'))
 
 app.use(express.json())
 app.use(cookieParser())

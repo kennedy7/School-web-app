@@ -46,6 +46,16 @@ projectRouter.get('/edit/:id', authUser, EditProject);
 
 projectRouter.post('/update/:id', authUser, UpdateProject);
 
+projectRouter.delete('/delete/:id', (req, res) => {
+    var id = req.params.id;
+    pool.query(`DELETE from projects where id = $1`,
+      [id],
+      (err, results) => {
+        res.redirect('/users/projectlist')
+      })
+  
+  })
+
 function authGetProject(req, res, next) {
     if (!canViewProject(req.user, req.project)) {
         res.status(401)

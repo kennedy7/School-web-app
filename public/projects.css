@@ -349,6 +349,25 @@ input[type="submit"] {
   margin: 80px auto 0;
 }
 
+.delete-method input[type="submit"] {
+  color: red;
+  font-size: 15px;
+  float: right;
+  font-weight: normal;
+  background-color: white;
+  height: 30px;
+  padding: 0px;
+  border-radius: 30px;
+  width: 10%;
+  display: inline;
+  margin: auto;
+ 
+}
+.delete-method input[type="submit"]:hover {
+  background-color: rgba(22,34,57,0.99) ;
+  cursor: pointer;
+}
+
 input[type="submit"]:hover {
   background-color: black;
   cursor: pointer;

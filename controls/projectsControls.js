@@ -51,8 +51,10 @@ exports.GetStudentProject = function (req, res) {
           req.body.summary,
           req.params.id ],
           (err, results) => {
-          res.redirect('/users/projectlist');
+         return res.redirect('/users/projectlist');
         });
     
-    
   }
+
+ 
+
