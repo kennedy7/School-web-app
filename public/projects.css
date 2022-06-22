@@ -361,6 +361,7 @@ input[type="submit"] {
   width: 10%;
   display: inline;
   margin: auto;
+  float:left;
  
 }
 .delete-method input[type="submit"]:hover {

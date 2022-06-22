@@ -2,7 +2,7 @@ const express = require('express')
 const projectRouter = express.Router()
 const { AddProject, GetStudentProject, EditProject, UpdateProject, GetProjectList, DeleteProject} = require('../controls/projectsControls')
 const { authUser} = require('../basicAuth')
-const {canViewProject} = require('../permissions/projects')
+const {canDeleteProject} = require('../permissions/projects')
 const {pool} = require('../dbConfig')
 
 projectRouter.get('/users/newproject', authUser, (req, res) => {
@@ -20,14 +20,21 @@ projectRouter.get('/edit/:id', authUser, EditProject);
 
 projectRouter.post('/update/:id', authUser, UpdateProject);
 
-projectRouter.delete('/delete/:id', DeleteProject)
+projectRouter.delete('/delete/:id', authUser, authDeleteProject, DeleteProject)
 
-function authGetProject(req, res, next) {
-    if (!canViewProject(req.user, req.project)) {
-        res.status(401)
-        return res.send('Access denied')
+function authDeleteProject(req, res, next){
+    const id = req.params.id
+    pool.query(`select * from projects where id = $1`, [id],
+    (err, results)=>{
+    if (req.user.id !== results.rows[0].userid) {
+        req.flash("success_msg", "only the Creator of a project can delete it");
+       return res.redirect("/users/projectlist");
     }
     next()
+})
+
+    
+
 }
 
 module.exports = {

@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>PROJECTS</title>
     <link rel="stylesheet" href="/projects.css">
+    <link rel="stylesheet" href="assets/css/loginpage.css">
     <link rel= "stylesheet" href ="https://bootswatch.com/5/flatly/bootstrap.min.css">
     <script src="/send_url.js"></script>
   </head>
@@ -20,19 +21,26 @@
       <p>PROJECT(s)</p>
     </header>
 
-    <ul>
-        <% if(messages.success_msg) { %>
-        <li><%= messages.success_msg %></li>
-        <% } %>
-      </ul>
-      <ul>
-        <% if(messages.error) { %>
-        <li><%= messages.error %></li>
-        <% } %>
-      </ul>
       
     <main>
       <ul class="list">
+        <ul>
+          <% if(messages.error) { %>
+            <div class="error-msg">
+              <i class="fa fa-times-circle">
+          <li><%= messages.error %></li>
+        </i>
+          <% } %>
+        </ul>
+        <ul>
+          <% if(messages.success_msg) { %>
+            <div class="success-msg">
+              <i class="fa fa-check">
+          <li><%= messages.success_msg %></li>
+             </i>
+          <% } %>
+        </div>
+        </ul>
         <% projects.forEach(project => { %>
           <li>
             <!-- Display the members only badge when the article.category is limited -->
@@ -45,12 +53,13 @@
             <h2><%= project.title %></h2>
             <p><%= project.summary %></p>
             <br></br>
-            <a href="/users/projects/<%= project.id %>" style ="padding-right: 80%;">Read more</a>
+            <a href="/users/projects/<%= project.id %>" style ="float: right;">Read more</a>
+
             <div class="delete-method">
-            <form action="/delete/<%= project.id %>?_method=DELETE" method="post" >
-              <input type="submit" value="Delete" class="btn btn-danger pull-right">
-            </form>
-          </div>
+              <form method="post" action="/delete/<%= project.id %>?_method=DELETE">
+                <input type="submit" value="Delete">
+              </form>
+            </div>
           </li>
         <% }) %>
       </ul>
