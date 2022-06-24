@@ -2,7 +2,6 @@ const express = require('express')
 const projectRouter = express.Router()
 const { AddProject, GetStudentProject, EditProject, UpdateProject, GetProjectList, DeleteProject} = require('../controls/projectsControls')
 const { authUser} = require('../basicAuth')
-const {canDeleteProject} = require('../permissions/projects')
 const {pool} = require('../dbConfig')
 
 projectRouter.get('/users/newproject', authUser, (req, res) => {
