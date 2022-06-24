@@ -12,7 +12,7 @@ const initializePassport = require("./passportconfig");
 initializePassport(passport);
 const port = process.env.PORT || 8000;
 
-
+//view engine
 app.set("view engine", "ejs");
 app.use(express.static('public'));
 
