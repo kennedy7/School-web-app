@@ -34,7 +34,7 @@ exports.GetStudentProject = function (req, res) {
   pool.query(
     'SELECT * FROM projects WHERE id =$1', [id],
     (error, results) => {
-      res.render('Projectsdetails', {
+      res.render('ProjectsDetails.ejs', {
         user: req.user.name,
         project: results.rows[0],
 
