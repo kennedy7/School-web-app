@@ -31,9 +31,6 @@ function authDeleteProject(req, res, next){
     }
     next()
 })
-
-    
-
 }
 
 module.exports = {
